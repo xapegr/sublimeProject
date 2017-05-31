@@ -1,0 +1,19 @@
+<div class="container event-form" ng-show="groupForm==1">
+    <form name="createGroupForm" ng-submit="createGroupForm.$valid && groupCtrl.addGroup()" novalidate>
+        <div>
+            <h2>Create new group:</h2><br>
+            <div class="row form-group">
+                <label class="col-sm-2 control-label" for="formGroup">Name: </label>
+                <input type="text" name="name" ng-model="group.name" ng-pattern="/^[a-z\d\-_\s]+$/i" required />
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-2 control-label" for="formGroup">Number of members: </label>
+                <input type="number" name="assistants" min="5" max="100" ng-model="group.maxMembers" required />
+            </div>
+            <div class="row form-group">
+                <button type="submit" class="btn btn-success" ng-disabled="createGroupForm.$invalid" ng-click="groupForm=0">Create</button>
+                <button class="btn btn-success" ng-click="groupForm=0">Back</button>
+            </div>
+        </div>
+    </form>
+</div>

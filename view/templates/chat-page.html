@@ -1,0 +1,25 @@
+<!--TODO call ajax function to make a select from db of all events and print it in desc order-->
+<div class="chat">
+	<div class="contacts">
+		<label>Contacts</label>
+        <div class="contacts-list">
+			<ul>
+                <div ng-repeat="friend in friendsArray">
+                    <li class="contact">
+                        <button ng-click="showChat=1; chatCtrl.loadMessages(friend.id)">{{friend.name}} {{friend.surname}}</button>
+                    </li>
+                </div>
+                <!-- Listar contactos del usuario: SELECT users.nickname FROM users INNER JOIN friends on users.id_user=friends.id_friend where friends.id_user=9 --> 
+            </ul>
+        </div>
+	</div>
+    <div class="chat-view">
+        <div class="messages-view">
+            <!-- Mostrar mensajes entre 2 usuarios SELECT message FROM chats WHERE (from_user = 1 and to_user = 2) or (from_user=2 and to_user=1) ORDER BY date ASC -->
+        </div>
+        <div class="chat-message">
+            <input type="text">
+            <button class="btn btn-success">Send</button>
+        </div>
+    </div>
+</div>

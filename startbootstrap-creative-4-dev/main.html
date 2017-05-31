@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="socialSchool" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Social School</title>
+
+    <!-- css-->
+    <link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <!-- jQuery-->
+    <script src="vendors/jquery/js/jQuery.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- jQuery Cookies management-->
+    <script src="vendors/jquery/jquery-cookie/jquery.cookie.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- Angular-->
+    <script src="vendors/angular/js/angular.min.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-file-upload.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-i18n/angular-locale_es-es.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/ng-currency.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-cookies.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/dirPagination.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/bootstrap/js/ui-bootstrap-tpls-2.3.1.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- Own Code -->
+    <script src="js/MainController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controllers/UserController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controllers/SessionController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/model/User.js" type="text/javascript" xml:space="preserve"></script>
+</head>
+
+<body ng-controller="SessionController as sessionCtrl" ng-init="userAction=1;sessionCtrl.sessionControl()">
+    <h1>Main Page</h1>
+    <button ng-click="sessionCtrl.logOut()">LogOut</button>
+</body>
+
+</html>

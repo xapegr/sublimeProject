@@ -1,0 +1,45 @@
+<!--TODO call ajax function to make a select from db of all groups and print it in desc order-->
+<!--<h1>Groups</h1>-->
+<div ng-show="groupForm==0">
+    <div class="col-md-12">
+        <div class="col-md-9">
+            <div dir-paginate="group in yourGroupsArray | itemsPerPage: pageSize" current-page="currentPage" class="group">
+                <div class="group-content">
+                    <div class="img-content">
+                        <img src="images/group.jpeg" alt="calendar" class="cal">
+                    </div>
+                    <div>
+                        <h2>{{group.name}}</h2>
+                        <span class="group-date">Day: {{group.fundationDate}}</span>
+                        <div ng-show="accessArray[group.id]">
+                            <form name="accessForm" ng-submit="unaccessToGroup(group.id)" novalidate>
+                                <button class="btn btn-danger btn-access" type="submit" name="button">Unaccess!</button>
+                            </form>
+                        </div>
+                        <!--<div ng-show="group.idUser == $userparent.idUser">
+                            <form name="editGroupForm" ng-submit="editGroup()" novalidate>
+                                <button class="btn btn-warning" type="submit" name="button">Edit</button>
+                            </form>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="create-group col-md-3">
+            <div class="form-group">
+                <button class="btn btn-success" type="submit" ng-click="groupForm=1">Create new group</button>
+            </div><br>
+            <div class="form-group">
+                <label for="groups" class="control-label">Groups per page:</label>
+                <input type="number" min="1" max="100" class="form-control" ng-model="pageSize" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="text-left" boundary-links="true">
+            <dir-pagination-controls boundary-links="true" template-url="view/templates/dir-pagination-controls.html"></dir-pagination-controls>
+        </div>
+    </div>
+</div>
+
+<create-group-form></create-group-form>

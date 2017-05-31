@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="socialSchool" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Social School</title>
+
+    <!-- css-->
+    <link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">-->
+
+    <!-- jQuery-->
+    <script src="vendors/jquery/js/jQuery.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- jQuery Cookies management-->
+    <script src="vendors/jquery/jquery-cookie/jquery.cookie.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- Angular-->
+    <script src="vendors/angular/js/angular.min.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-file-upload.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-i18n/angular-locale_es-es.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/ng-currency.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/angular-cookies.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/angular/js/dirPagination.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="vendors/bootstrap/js/ui-bootstrap-tpls-2.3.1.js" type="text/javascript" xml:space="preserve"></script>
+
+    <!-- Own Code -->
+    <script src="js/MainController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controllers/SessionController.js" type="text/javascript" xml:space="preserve"></script>
+    <script src="js/controllers/UserController.js" type="text/javascript" xml:space="preserve"></script>
+
+    <script src="js/model/User.js" type="text/javascript" xml:space="preserve"></script>
+</head>
+
+<body ng-controller="SessionController as sessionCtrl" ng-init="sessionCtrl.sessionControl()">
+    <div ng-controller="UserController as userCtrl" ng-init="showForm=0">
+        <header>
+            <!--Aqui va el titulo y el slogan-->
+            <h1>Social school</h1>
+            <h3>The real school in network</h3>
+        </header>
+        <div class="container col-md-8 col-md-offset-2">
+            <!--div contenedor-->
+            <div class="col-md-9">
+                <div class="" ng-show="showForm==0">
+                    <!--<img src="https://haltonparents.files.wordpress.com/2013/08/teens-starting-high-school.jpg">-->
+                </div>
+                <!--Div con login y registro-->
+                <!--<p>Login</p>-->
+                <div class="login" ng-show="showForm==1">
+                    <!--login-->
+                    <login-form></login-form>
+                </div>
+                <div class="register" ng-show="showForm==2">
+                    <!--register-->
+                    <register-form></register-form>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="login-btn">
+                    <button class="btn btn-primary" ng-click="showForm=1;userCtrl.clean()">Login</button>
+                </div>
+                <div class="register-btn">
+                    <button class="btn btn-primary" ng-click="showForm=2;userCtrl.clean()">Register</button>
+                </div>
+                <div class="pass-recovery">
+                    <a href="" ng-click="userCtrl.passRec()" >Password recovery</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!--TODO call ajax function to make a select from db of all events and print it in desc order-->
+<!--<h1>Events</h1>-->
+<div ng-show="eventForm==0">
+    <div class="col-md-12">
+        <div class="col-md-9">
+            <div dir-paginate="event in eventsArray | itemsPerPage: pageSize" current-page="currentPage" class="container event">
+                <div class="event-content">
+                    <div class="img-content">
+                        <img src="images/calendar.png" alt="calendar" class="cal">
+                    </div>
+                    <h2>{{event.name}}</h2>
+                    <span class="event-date">Day: {{event.date}}</span>
+                    <div class="row form-group">
+                        <div ng-show="!assistArray[event.id]">
+                            <form name="assistForm" ng-submit="assistToEvent(event.id)" novalidate>
+                                <button class="btn btn-success btn-assist" type="submit">Assist!</button>
+                            </form>
+                        </div>
+                        <div ng-show="assistArray[event.id]">
+                            <form name="assistForm" ng-submit="unassistToEvent(event.id)" novalidate>
+                                <button class="btn btn-danger btn-assist" type="submit">Unassist!</button>
+                            </form>
+                        </div>
+                        <div ng-show="editEventArray[event.id]">
+                            <button class="btn btn-warning" type="submit" ng-click="eventForm=2;eventCtrl.show(event.id)">Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="create-event col-md-3">
+            <div class="form-group">
+                <button class="btn btn-success" type="submit" ng-click="eventForm=1">Create new event</button>
+            </div><br>
+            <div class="form-group">
+                <label for="events" class="control-label">Events per page:</label>
+                <input type="number" min="1" max="100" class="form-control" ng-model="pageSize" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="text-left" boundary-links="true">
+            <dir-pagination-controls boundary-links="true" template-url="view/templates/dir-pagination-controls.html"></dir-pagination-controls>
+        </div>
+    </div>
+</div>
+
+<create-event-form></create-event-form>
+
+<edit-event-form></edit-event-form>

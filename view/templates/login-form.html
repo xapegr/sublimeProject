@@ -1,0 +1,21 @@
+<form name="loginForm" ng-submit="loginForm.$valid && userCtrl.connection()" novalidate>
+	<div>
+		<h2>Login</h2><br>
+		<div class="form-group inner-addon left-addon">
+			<label class="form-label">User: </label>
+			<input type="text" name="nick" ng-model="user.nickName" required />
+			<span class="glyphicon glyphicon-user login-icon"></span>
+		</div>
+		<div class="form-group inner-addon right-addon">
+			<label class="form-label">Password: </label>
+			<input type="password" name="pass" ng-model="user.password" required />
+			<span class="glyphicon glyphicon-lock login-icon"></span>
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-success" ng-disabled="loginForm.$invalid">Login</button>
+		</div>
+		<div class="form-group">
+			<span ng-if="!correctUser" class="bg-danger">User or password not correct.</span>
+		</div>
+	</div>
+</form>

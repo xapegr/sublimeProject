@@ -1,0 +1,68 @@
+<!--TODO call ajax function to make a select from db of all events and print it in desc order-->
+<div class="chat">
+  <div class="contacts">
+    <label>Filters</label>
+    <div>
+
+      <input type="radio" name="search" ng-click="searchCtrl.load()" ng-model="whatSearch" value="0" ng-checked="true" /> Users <br/>
+      <input type="radio" name="search" ng-click="searchCtrl.load()" ng-model="whatSearch" value="1" /> Events <br/>
+      <input type="radio" name="search" ng-click="searchCtrl.load()" ng-model="whatSearch" value="2" /> Groups <br/>
+
+    </div>
+  </div>
+  <div class="chat-view">
+    <div style="height: 90%; border:2px solid black; margin-bottom:5px">
+      <!--Showing a table for every value of whatSearch-->
+      <div ng-show="whatSearch==0">
+        <table class="table-striped">
+          <tr>
+            <td>NickName</td>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Add Friend</td>
+          </tr>
+          <tr ng-repeat="user in filteredData">
+            <!--dir-paginate="user in filteredData | itemsPerPage: pageSize" current-page="currentPage"-->
+            <td>{{user.nickName}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td><button type="button" class="btn btn-default" name="button"><i class="fa fa-user-plus"></i></button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div ng-show="whatSearch==1">
+        <table class="table-striped">
+          <tr>
+            <td>Name</td>
+            <td>Max members</td>
+            <td>Join</td>
+          </tr>
+          <tr dir-paginate="event in filteredData | itemsPerPage: pageSize" current-page="currentPage">
+            <td>{{event.name}}</td>
+            <td>{{event.maxMembers}}</td>
+            <td><button type="button" class="btn btn-default" name="button">Join!</button></td>
+          </tr>
+        </table>
+
+      </div>
+      <div ng-show="whatSearch==2">
+        <table class="table-striped">
+          <tr>
+            <td>Name</td>
+            <td>Max assistants</td>
+          </tr>
+          <tr dir-paginate="group in filteredData | itemsPerPage: pageSize" current-page="currentPage">
+            <td>{{group.name}}</td>
+            <td>{{group.maxAssistants}}</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+    <div style="height:43px;">
+      <input type="text" style="height:100%; width:85%">
+      <button style="height:100%; width:14%; margin-left: 3px">Search</button>
+    </div>
+  </div>
+</div>

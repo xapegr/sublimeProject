@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="socialSchool" xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Social School</title>
+
+  <!-- css-->
+  <link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">-->
+
+  <!-- jQuery-->
+  <script src="vendors/jquery/js/jQuery.js" type="text/javascript" xml:space="preserve"></script>
+
+  <!-- jQuery Cookies management-->
+  <script src="vendors/jquery/jquery-cookie/jquery.cookie.js" type="text/javascript" xml:space="preserve"></script>
+
+  <!-- Angular-->
+  <script src="vendors/angular/js/angular.min.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/angular-file-upload.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/angular-i18n/angular-locale_es-es.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/ng-currency.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/angular-cookies.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/angular/js/dirPagination.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="vendors/bootstrap/js/ui-bootstrap-tpls-2.3.1.js" type="text/javascript" xml:space="preserve"></script>
+
+  <!-- Own Code -->
+  <script src="js/MainController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controllers/SessionController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controllers/UserController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controllers/EventController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controllers/ChatController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controllers/SearchController.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/controllers/GroupController.js" type="text/javascript" xml:space="preserve"></script>
+
+  <script src="js/model/User.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/model/Event.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/model/Chat.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/model/Group.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/model/AssistEvent.js" type="text/javascript" xml:space="preserve"></script>
+  <script src="js/model/AccessGroup.js" type="text/javascript" xml:space="preserve"></script>
+</head>
+
+<body ng-controller="SessionController as sessionCtrl" ng-init="userAction=1;sessionCtrl.sessionControl()">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" ng-click="main=0" class="menu-item">Social School</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#" ng-click="main=0" class="menu-item">Events</a></li>
+        <li><a href="#" ng-click="main=1" class="menu-item">Search</a></li>
+        <li><a href="#" ng-click="main=2" class="menu-item">Chat</a></li>
+        <li><a href="#" ng-click="main=3" class="menu-item">Your groups</a></li>
+        <li><a href="#" ng-click="sessionCtrl.logOut()" class="menu-item">LogOut</a></li>
+        <!--Button from user here comes the drop down menu-->
+        <!--the user button need to go right-->
+        <!--
+        <div class="dropdown">
+            <button type="button" class="btn-sm btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <span class="glyphicon glyphicon-user ">User</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+          </ul>
+        </div>-->
+      </ul>
+    </div>
+  </nav>
+  <div ng-controller="UserController as userCtrl" class="container col-md-10 col-md-offset-1">
+
+    <div ng-show="main==0" ng-controller="EventController as eventCtrl" ng-init="loadEvents()">
+      <events-page></events-page>
+    </div>
+    <div ng-show="main==1" ng-controller="SearchController as searchCtrl" ng-init="searchCtrl.load()">
+      <search-page></search-page>
+    </div>
+    <div ng-show="main==2" ng-controller="ChatController as chatCtrl" ng-init="userCtrl.listFriends()" >
+      <chat-page></chat-page>
+    </div>
+    <div ng-show="main==3" ng-controller="GroupController as groupCtrl" ng-init="groupCtrl.loadYourGroups()" >
+      <groups-page></groups-page>
+    </div>
+  </div>
+
+</body>
+
+</html>

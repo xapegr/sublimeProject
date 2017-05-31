@@ -1,0 +1,29 @@
+<html ng-app="socialSchool">
+  <head>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Social School</title>
+  </head>
+  <body ng-controller="mainController as mCtrl">
+    <div class="image .col-md-12">
+      <!--centrar imagen css-->
+      <img src="https://haltonparents.files.wordpress.com/2013/08/teens-starting-high-school.jpg">
+    </div>
+    <div class="container">
+      <nav>
+        <a href="#" ng-click="shomForm=1">Login</a>
+        <a href="#" ng-click="shomForm=2">Register</a>
+      </nav>
+    </div>
+    <div class="enlace .col-md-8"><!--Mirar para que se abra con MODAL-->
+      <login-form></login-form>
+      <!--<a href="LogIn/login.php" class=".col-md-4">Log in</a><br><br>-->
+    </div>
+    <div class="enlace .col-md-8">
+      <register-form></register-form><!--Mirar MODAL-->
+      <!--<a href="Register/register.php" class=".col-md-4">Register</a>-->
+    </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<div class="container event-form" ng-show="eventForm==2">
+    <form name="editEventForm" ng-submit="editEventForm.$valid && eventCtrl.modifyEvent()" novalidate>
+        <div>
+            <h2>Edit event:</h2><br>
+            <div class="row form-group">
+                <label class="col-sm-2 control-label" for="formGroup">Name: </label>
+                <input type="text" name="name" ng-model="event.name" ng-pattern="/^[a-z\d\-_\s]+$/i" required />
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-2 control-label" for="formGroup">Number of assistants: </label>
+                <input type="number" name="assistants" min="5" max="100" ng-model="event.maxAssistants" required readonly />
+            </div>
+            <div class="row form-group">
+                <label class="col-sm-2 control-label" for="formGroup">Date:</label>
+                <div class="col-sm-2">
+                    <p class="input-group">
+                        <input type="text" class="form-control" id="eventDate" uib-datepicker-popup="dd-MM-yyyy" is-open="eventDate.opened" datepicker-options="dateOptions"
+                            alt-input-formats="altInputFormats" close-text="Close" ng-required="true" ng-model="event.date" readonly/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openEventDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="row form-group">
+                <button type="submit" class="btn btn-success" ng-disabled="editEventForm.$invalid" ng-click="eventForm=0">Create</button>
+                <button class="btn btn-success" ng-click="eventForm=0">Back</button>
+            </div>
+        </div>
+    </form>
+</div>
